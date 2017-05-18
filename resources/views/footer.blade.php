@@ -1,4 +1,4 @@
-  <footer style="height:4.7%;">
+  <footer style="height:4.9%;background:#ededed;">
           <div class="pull-right">
           
           </div>

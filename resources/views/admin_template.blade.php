@@ -9,6 +9,8 @@
   <!-- Bootstrap 3.3.6 -->
 
    <link href="gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Font Awesome -->
     <link href="gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -32,8 +34,7 @@
   <script type='text/javascript'  src="angular/plugins/angular/ocLazyLoad.min.js"></script>
   <script type='text/javascript' src="angular/plugins/angular-ui-router/release/angular-ui-router.js"></script>
   <script type='text/javascript' src="angular/plugins/angular/angular-resource.js"></script>
-  <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
   <!--plugins-->
   <script type='text/javascript' src="angular/route.js"></script>
