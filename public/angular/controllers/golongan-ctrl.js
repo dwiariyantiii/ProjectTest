@@ -1,9 +1,11 @@
 app.controller('golongancontroller', function ($scope,$state,golonganResource) {
+  $scope.widgetShow = false;
+  $scope.success = "false";
   $scope.init = [];
   $scope.data = {};
   $scope.message = {};
   $scope.golongan = {};
-
+  $scope.editmode = false;
   var golonganresource = new golonganResource();
 
   
@@ -39,6 +41,8 @@ app.controller('golongancontroller', function ($scope,$state,golonganResource) {
     {
         if(data.success)
         {
+            $scope.widgetShow  = true;
+            $scope.success = true;
             $scope.message = "Data golongan berhasil disimpan";
             $scope.init = [];
             $scope.initgolongan();
@@ -74,18 +78,25 @@ app.controller('golongancontroller', function ($scope,$state,golonganResource) {
         $scope.initgolongan();
     })
   }
-   $scope.btnDeleteClick = function(id)
+  $scope.btnDeleteClick = function(id)
   {
-   
-    golonganresource.$delete({'id': id },function(data)
+     $("#modal-delete").modal('show');
+     $scope.deleteid = id;
+  }
+$scope.DeleteClick = function()
+{
+  golonganresource.$delete({'id':  $scope.deleteid },function(data)
     {
-       
+      
         $scope.init = [];
+         $("#modal-delete").modal('hide');
         $scope.initgolongan();
     })
-  }
-
-
+}
+$scope.btnEditClick = function()
+{
+  $scope.editmode = true;
+}
 
 
 });
