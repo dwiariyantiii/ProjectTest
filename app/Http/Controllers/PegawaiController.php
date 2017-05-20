@@ -43,8 +43,8 @@ class PegawaiController extends Controller
         $pegawai->Gelar = $request->Gelar;
         $pegawai->Jabatan = $request->Jabatan;
         $pegawai->GolonganID =$request->GolonganID;
-        $golongan->CreatedBy ="dwi";
-        $golongan->UpdatedBy ="dwi";
+        $pegawai->CreatedBy ="dwi";
+        $pegawai->UpdatedBy ="dwi";
         $pegawai->IsActive = TRUE;
 
         $save = $pegawai->save();
@@ -90,7 +90,22 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->NIP = $request->NIP;
+        $pegawai->Nama = $request->Nama;
+        $pegawai->Gelar = $request->Gelar;
+        $pegawai->Jabatan = $request->Jabatan;
+        $pegawai->GolonganID =$request->GolonganID;
+        $pegawai->UpdatedBy ="dwi";        
+        $save = $pegawai->save();
+        if($save)
+        {
+        return response()->json(['success' => true]);
+        }
+        else
+        {
+        return response()->json(['success' => false, "obj" => $pegawai]);
+        }
     }
 
     /**
@@ -101,6 +116,16 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->IsActive = false;
+        $save = $pegawai->save();
+        if($save)
+        {
+        return response()->json(['success' => true]);
+        }
+        else
+        {
+        return response()->json(['success' => false]);
+        }
     }
 }
