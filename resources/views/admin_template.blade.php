@@ -111,7 +111,8 @@
     <!--service-->
 <script src="angular/services/common.service.js"></script>
 <script src="angular/services/sampleResource.js"></script>
-<script src="angular/services/golonganResource.js"></script>
+<script src="angular/services/golongan.service.js"></script>
+<script src="angular/services/pegawai.service.js"></script>
 <script src="angular/services/passingdata.service.js"></script>
 
 
@@ -119,6 +120,6 @@
 <script src="angular/controllers/Master.js"></script>
 <script src="angular/controllers/sample-ctrl.js"></script>
 <script src="angular/controllers/golongan-ctrl.js"></script>
-
+<script src="angular/controllers/pegawai-ctrl.js"></script>
 </body>
 </html>

@@ -29,3 +29,9 @@ use Illuminate\Http\Request;
 Route::resource('golongan','GolonganController');
 Route::post('golongan/update/{id}','GolonganController@update');
 Route::post('golongan/delete/{id}','GolonganController@destroy');
+
+Route::resource('pegawai','PegawaiController');
+Route::get('pegawai/create','PegawaiController@create');
+//Route::post('pegawai/store}','PegawaiController@store');
+Route::post('pegawai/update/{id}','PegawaiController@update');
+Route::post('pegawai/delete/{id}','PegawaiController@destroy');

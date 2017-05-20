@@ -13,17 +13,10 @@ app.config([
                 url: '/golongan',
                 templateUrl: '/angular/partialviews/golongan.html'
             }) 
-            .state('sample-create', {
-                url: '/sample-create',
-                templateUrl: '/angular/partialviews/sample/create.html'
+            .state('pegawai', {
+                url: '/pegawai',
+                templateUrl: '/angular/partialviews/pegawai.html'
             })
-            .state('sample-detail', {
-                url: '/sample-detail',
-                templateUrl: '/angular/partialviews/sample/detail.html'
-            })
-            .state('sample-edit', {
-                url: '/sample-edit',
-                templateUrl: '/angular/partialviews/sample/edit.html'
-            });
+           
     }
 ]);

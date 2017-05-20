@@ -1,0 +1,173 @@
+<div  ng-controller="pegawaicontroller" class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+               
+                <div class="x_panel">
+                  <div class="x_content bs-example-popovers">
+
+                  <div ng-show="widgetShow" ng-class="success == true ? 'alert alert-success alert-dismissible fade in':'alert alert-danger alert-dismissible fade in'" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                         
+                  </div>
+
+                </div>
+                  <div class="x_title">
+                    <h2>Pegawai</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <button ng-click="btnAddClick()" type="button" class="btn btn-default btn-flat" data-widget=""><i class="glyphicon glyphicon-plus"></i></button>
+                     Pegawai
+                    <table id="datatable"  datatable="ng" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NIP</th>
+                          <th>Nama</th>
+                          <th>Jabatan</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+
+
+                      <tbody>
+                        <tr ng-repeat="item in init">
+                          <td>{{item.NIP}}</td>
+                          <td>{{item.Nama}}</td>
+                          <td>{{item.Jabatan}}</td>
+                          <td> 
+                            <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDetailClick(item.id)">Detail</button>
+                            <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDeleteClick(item.id)">Delete</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+      <div class="modal modal-message fade" id="modal-add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Tambah Pegawai</h4>
+                </div>
+                <div class="modal-body">
+                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">NIP<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" ng-model="data.NIP"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nama<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" ng-model="data.Nama" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Gelar<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" ng-model="data.Gelar" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Golongan<span class="required">*</span>
+                       </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                       <select class="form-control"  ng-model="data.GolonganID">
+                                 <option value="">Please Select</option>
+                                 <option ng-repeat="golongan in golonganlist" value="{{golongan.id}}">
+                                      {{golongan.Golongan}} - {{golongan.Pangkat}}
+                                </option>
+                      </select>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jabatan<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" ng-model="data.Jabatan" placeholder="Jabatan"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>                                                     
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="AddClick()">Save</button>
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal modal-message fade" id="modal-detail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Detail Golongan</h4>
+                </div>
+                <div class="modal-body">
+                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Golongan<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label ng-if="editmode == false" class="form-control-static">{{golongan.Golongan}}</label>
+                          <input ng-if="editmode == true" type="text" ng-model="golongan.Golongan"  placeholder="Golongan " required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pangkat<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                           <label ng-if="editmode == false" class="form-control-static">{{golongan.Pangkat}}</label>
+                          <input ng-if="editmode == true" type="text" ng-model="golongan.Pangkat" placeholder="Pangkat"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>                  
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                    <button ng-if="editmode == true"  type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="UpdateClick()">Save</button>
+                    <button ng-if="editmode == false" type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnEditClick()">Edit</button>
+                    <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-message fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Confirmation Message</h4>
+                </div>
+                <div class="modal-body">
+                       <div class="form-group">
+                       <p>Apakah anda yakin akan menghapus data ini ?</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                   
+                  <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="DeleteClick()">OK</button>
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                    
