@@ -49,7 +49,7 @@
         @include('header')
               <!-- page content -->
         <div class="right_col" role="main" ui-view >
-          
+           @yield('content')
         </div>
         <!-- /page content -->
 
@@ -114,12 +114,13 @@
 <script src="angular/services/golongan.service.js"></script>
 <script src="angular/services/pegawai.service.js"></script>
 <script src="angular/services/passingdata.service.js"></script>
-
+<script src="angular/services/notadinas.service.js"></script>
 
     <!--controller-->
 <script src="angular/controllers/Master.js"></script>
 <script src="angular/controllers/sample-ctrl.js"></script>
 <script src="angular/controllers/golongan-ctrl.js"></script>
 <script src="angular/controllers/pegawai-ctrl.js"></script>
+<script src="angular/controllers/notadinas-ctrl.js"></script>
 </body>
 </html>

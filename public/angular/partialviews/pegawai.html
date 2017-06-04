@@ -33,9 +33,9 @@
 
                       <tbody>
                         <tr ng-repeat="item in init">
-                          <td>{{item.NIP}}</td>
-                          <td>{{item.Nama}}</td>
-                          <td>{{item.Jabatan}}</td>
+                          <td>{{item.nip}}</td>
+                          <td>{{item.nama}}</td>
+                          <td>{{item.jabatan}}</td>
                           <td> 
                             <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDetailClick(item.id)">Detail</button>
                             <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDeleteClick(item.id)">Delete</button>
@@ -60,31 +60,31 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">NIP<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" ng-model="data.NIP"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" ng-model="data.nip"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nama<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" ng-model="data.Nama" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" ng-model="data.nama" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div> 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Gelar<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" ng-model="data.Gelar" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" ng-model="data.gelar" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                        <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Golongan<span class="required">*</span>
                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <select class="form-control"  ng-model="data.GolonganID">
+                       <select class="form-control"  ng-model="data.golonganid">
                                  <option value="">Please Select</option>
-                                 <option ng-repeat="golongan in golonganlist" value="{{golongan.id}}">
-                                      {{golongan.Golongan}} - {{golongan.Pangkat}}
+                                 <option ng-repeat="golongan in listgolongan" value="{{golongan.id}}">
+                                      {{golongan.golongan}} - {{golongan.pangkat}}
                                 </option>
                       </select>
                       </div>
@@ -93,7 +93,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jabatan<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" ng-model="data.Jabatan" placeholder="Jabatan"  required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" ng-model="data.jabatan" placeholder="Jabatan"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>                                                     
                     </form>
@@ -120,35 +120,35 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">NIP<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.NIP}}</label>
-                          <input ng-if="editmode == true" type="text" ng-model="pegawai.NIP"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
+                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.nip}}</label>
+                          <input ng-if="editmode == true" type="text" ng-model="pegawai.nip"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nama<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.Nama}}</label>                          
-                          <input ng-if="editmode == true" type="text" ng-model="pegawai.Nama" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
+                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.nama}}</label>                          
+                          <input ng-if="editmode == true" type="text" ng-model="pegawai.nama" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div> 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Gelar<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.Nama}}</label>                                                    
-                          <input ng-if="editmode == true" type="text" ng-model="pegawai.Nama" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.gelar}}</label>                                                    
+                          <input ng-if="editmode == true" type="text" ng-model="pegawai.gelar" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                        <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Golongan<span class="required">*</span>
                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.GolonganName}}</label>                                                                              
-                       <select ng-if="editmode == true" class="form-control"  ng-model="pegawai.GolonganID">
+                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.golongan.golongan}} - {{pegawai.golongan.pangkat}}</label>                                                                              
+                           <select ng-if="editmode == true" class="form-control"  ng-model="pegawai.golonganid">
                                  <option value="" ng-selected="ng-selected">Please Select</option>
-                                 <option ng-repeat="golongan in golonganlist" value="{{golongan.id}}" ng-selected="getSelectedGolongan(golongan.id, pegawai.GolonganID)">
-                                      {{golongan.Golongan}} - {{golongan.Pangkat}}
+                                 <option ng-repeat="golongan in listgolongan" value="{{golongan.id}}" ng-selected="getSelectedGolongan(golongan.id, pegawai.golonganid)">
+                                      {{golongan.golongan}} - {{golongan.pangkat}}
                                 </option>
                       </select>
                       </div>
@@ -157,8 +157,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jabatan<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.Jabatan}}</label>                                                                                                        
-                          <input ng-if="editmode == true" type="text" ng-model="pegawai.Jabatan" placeholder="Jabatan"  required="required" class="form-control col-md-7 col-xs-12">
+                          <label ng-if="editmode == false" class="form-control-static">{{pegawai.jabatan}}</label>                                                                                                        
+                          <input ng-if="editmode == true" type="text" ng-model="pegawai.jabatan" placeholder="Jabatan"  required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>                 
                     </form>

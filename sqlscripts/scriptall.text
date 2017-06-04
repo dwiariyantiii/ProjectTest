@@ -1,0 +1,100 @@
+CREATE TABLE `golongan` (
+   id int NOT NULL AUTO_INCREMENT,
+  `golongan` varchar(30) NOT NULL,
+   pangkat varchar(39) NULL,
+  `isactive` tinyint(1) NOT NULL,
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_golongan PRIMARY KEY NONCLUSTERED (id)
+)
+
+CREATE TABLE `pegawai` (
+   id int NOT NULL AUTO_INCREMENT,
+  `nip` varchar(20) NOT NULL,
+   nama varchar(30) NULL,
+   gelar varchar(20) NULL,
+   jabatan varchar(50) null,
+   golonganid int null,
+  `isactive`tinyint(1) NOT NULL,  
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_pegawai PRIMARY KEY (id),
+   CONSTRAINT fk_pegawai_golongan FOREIGN KEY (golonganid)  
+   REFERENCES golongan (id)   
+)
+
+CREATE TABLE `notadinas` (
+   id int NOT NULL AUTO_INCREMENT,
+  instansitujuan varchar(100) not null,
+  instansipengirim varchar(100) not null,
+  nomorsurat varchar(100) not null,
+  tangalsurat datetime not null,
+  sifatsurat  varchar(50) null,
+  lampiran varchar(30) null,
+  perihal varchar(255) not null,
+  deskripsi varchar(500) null,
+  asalkota varchar(255) null,
+  kotatujuan varchar(255) null,
+  tanggalberangkat datetime null,
+  tanggalkembali datetime null,
+  file varchar(30) null,
+  `isactive` tinyint(1) NOT NULL,  
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_notadinas PRIMARY KEY (id)
+   
+)
+
+CREATE TABLE `notadinasdetail` (
+   id int NOT NULL AUTO_INCREMENT,
+   notadinasid int not null,
+   pegawaiid int not null,
+  `isactive` tinyint(1) NOT NULL,  
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_notadinasdetail PRIMARY KEY (id),
+   CONSTRAINT fk_notadinasdetail_notadinas FOREIGN KEY (notadinasid)  
+   REFERENCES notadinas (id),
+   CONSTRAINT fk_notadinasdetail_pegawai FOREIGN KEY (pegawaiid)  
+   REFERENCES pegawai (id)  
+)
+
+CREATE TABLE `surattugas` (
+   id int NOT NULL AUTO_INCREMENT,
+   notadinasid int not null,
+   nomorsurat varchar(50) null,
+   file varchar(10) null,
+  `isactive` tinyint(1) NOT NULL,  
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_surattugas PRIMARY KEY (id),
+   CONSTRAINT fk_surattugas_notadinas FOREIGN KEY (notadinasid)  
+   REFERENCES notadinas (id) 
+)
+
+CREATE TABLE `surattugasdetail` (
+   id int NOT NULL AUTO_INCREMENT,
+   surattugasid int not null,
+   type varchar(15) null,
+   deskripsi varchar(500) null,
+  `isactive` tinyint(1) NOT NULL,  
+  `createddate` datetime NOT NULL,
+  `createdby` varchar(30) NOT NULL,
+  `updateddate` datetime DEFAULT NULL,
+  `updatedby` varchar(30) DEFAULT NULL,
+   CONSTRAINT pk_surattugasdetail PRIMARY KEY (id),
+   CONSTRAINT fk_ssurattugasdetail_surattugas FOREIGN KEY (surattugasid)  
+   REFERENCES surattugas (id) 
+)
+
+

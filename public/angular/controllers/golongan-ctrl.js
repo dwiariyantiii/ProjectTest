@@ -34,9 +34,9 @@ app.controller('golongancontroller', function ($scope,$state,golonganResource) {
   {
     $("#modal-add").modal('hide');
     console.log($scope.data);
-    golonganresource.Golongan = $scope.data.golongan;
-    golonganresource.Pangkat = $scope.data.pangkat;
-    golonganresource.CreatedBy = "Test";
+    golonganresource.golongan = $scope.data.golongan;
+    golonganresource.pangkat = $scope.data.pangkat;
+  
     golonganresource.$add({},function(data)
     {
         if(data.success)
@@ -68,9 +68,9 @@ app.controller('golongancontroller', function ($scope,$state,golonganResource) {
 
   $scope.UpdateClick = function()
   {
-    golonganresource.Golongan = $scope.golongan.Golongan;
-    golonganresource.Pangkat = $scope.golongan.Pangkat;
-    golonganresource.CreatedBy = "Test";
+    golonganresource.golongan = $scope.golongan.golongan;
+    golonganresource.pangkat = $scope.golongan.pangkat;
+  
     golonganresource.$update({'id':$scope.golongan.id},function(data)
     {
         $("#modal-detail").modal('hide');

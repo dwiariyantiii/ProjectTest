@@ -17,6 +17,10 @@ app.config([
                 url: '/pegawai',
                 templateUrl: '/angular/partialviews/pegawai.html'
             })
+            .state('notadinas', {
+                url: '/notadinas',
+                templateUrl: '/angular/partialviews/notadinas.html'
+            })
            
     }
 ]);

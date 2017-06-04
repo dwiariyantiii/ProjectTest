@@ -10,6 +10,12 @@
                       <li><a href="#/pegawai">Pegawai</a></li>
                     </ul>
                   </li>
+                   <li><a><i class="fa fa-file-o"></i> Surat <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#/notadinas">Nota Dinas</a></li>
+                    
+                    </ul>
+                  </li>
                 
                   
                 </ul>

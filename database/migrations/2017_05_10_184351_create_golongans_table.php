@@ -14,7 +14,7 @@ class CreateGolongansTable extends Migration
     public function up()
     {
         Schema::create('golongans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id',10);
             $table->string('Golongan', 20);
             $table->string('Pangkat',20);
             $table->string('CreatedBy',30);

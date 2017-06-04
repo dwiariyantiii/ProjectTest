@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Golongan;
+use Carbon\Carbon;
+use Auth;
 
 class GolonganController extends Controller
 {
@@ -16,7 +18,7 @@ class GolonganController extends Controller
     
     public function index()
     {
-        $golongan = Golongan::where('IsActive', 1)->get();
+        $golongan = Golongan::where('isactive', 1)->get();
         return response()->json(['success' => true, 'obj' => $golongan]);
     }
 
@@ -40,12 +42,15 @@ class GolonganController extends Controller
     public function store(Request $request)
     {
         $golongan = new Golongan;
-
-        $golongan->Golongan = $request->Golongan;
-        $golongan->Pangkat = $request->Pangkat;
-        $golongan->CreatedBy = $request->CreatedBy;
-        $golongan->UpdatedBy =$request->CreatedBy;
-        $golongan->IsActive = TRUE;
+     
+        $user = 'dwi';
+        $golongan->golongan = $request->golongan;
+        $golongan->pangkat = $request->pangkat;
+        $golongan->createdBy = $user;
+        $golongan->updatedBy =$user;
+        $golongan->createddate = Carbon::now();
+        $golongan->updateddate = $golongan->createdate;
+        $golongan->isactive = TRUE;
        
         
         $save = $golongan->save();
@@ -93,8 +98,13 @@ class GolonganController extends Controller
     public function update(Request $request, $id)
     {
         $golongan = Golongan::find($id);
-        $golongan->Golongan = $request->Golongan;
-        $golongan->Pangkat = $request->Pangkat;
+      
+        $user = 'dwi';
+
+        $golongan->golongan = $request->golongan;
+        $golongan->pangkat = $request->pangkat;
+        $golongan->updatedBy =$user;
+        $golongan->updateddate = Carbon::now();
         $save = $golongan->save();
         //Golongan::create($golongan);
       
@@ -117,7 +127,7 @@ class GolonganController extends Controller
     public function destroy($id)
     {
          $golongan = Golongan::find($id);
-         $golongan->IsActive = false;
+         $golongan->isactive = false;
          $save = $golongan->save();
         if($save)
         {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pegawai;
 use App\Golongan;
+use Carbon\Carbon;
 class PegawaiController extends Controller
 {
     /**
@@ -14,8 +15,11 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $pegawai = Pegawai::where('IsActive',1)->get();
+        ///$pegawai = Pegawai::where('IsActive',1)->get();
+        $pegawai = Pegawai::with('golongan')->where('isactive',1)->get();
+        //$data = $pegawai->$golongan->$golongan;
         return response()->json(['success' => true, 'obj' => $pegawai]);
+        //return view('golongan')->with('pegawai',$houses);
     }
 
     /**
@@ -25,7 +29,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        $golongan = Golongan::where('IsActive', 1)->get();
+        $golongan = Golongan::where('isactive', 1)->get();
         return response()->json(['success' => true, 'obj' => $golongan]);
     }
 
@@ -38,14 +42,17 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $pegawai = new Pegawai;
-        $pegawai->NIP = $request->NIP;
-        $pegawai->Nama = $request->Nama;
-        $pegawai->Gelar = $request->Gelar;
-        $pegawai->Jabatan = $request->Jabatan;
-        $pegawai->GolonganID =$request->GolonganID;
-        $pegawai->CreatedBy ="dwi";
-        $pegawai->UpdatedBy ="dwi";
-        $pegawai->IsActive = TRUE;
+        $user = 'dwi';
+        $pegawai->nip = $request->nip;
+        $pegawai->nama = $request->nama;
+        $pegawai->gelar = $request->gelar;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->golonganid =$request->golonganid;
+        $pegawai->createdby =$user;
+        $pegawai->updatedby =$user;
+        $pegawai->createddate = Carbon::now();
+        $pegawai->updateddate = $pegawai->createdate;
+        $pegawai->isactive = TRUE;
 
         $save = $pegawai->save();
         if($save)
@@ -67,7 +74,8 @@ class PegawaiController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['success' => true, 'obj' => Pegawai::FindOrFail($id)]);
+        
+        return response()->json(['success' => true, 'obj' => Pegawai::with('golongan')->FindOrFail($id)]);
     }
 
     /**
@@ -91,12 +99,14 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $pegawai = Pegawai::find($id);
-        $pegawai->NIP = $request->NIP;
-        $pegawai->Nama = $request->Nama;
-        $pegawai->Gelar = $request->Gelar;
-        $pegawai->Jabatan = $request->Jabatan;
-        $pegawai->GolonganID =$request->GolonganID;
-        $pegawai->UpdatedBy ="dwi";        
+        $user = 'dwi';
+        $pegawai->nip = $request->nip;
+        $pegawai->nama = $request->nama;
+        $pegawai->gelar = $request->gelar;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->golonganid =$request->golonganid;
+        $pegawai->updatedby =$user;
+        $pegawai->updateddate = Carbon::now();     
         $save = $pegawai->save();
         if($save)
         {
@@ -117,7 +127,7 @@ class PegawaiController extends Controller
     public function destroy($id)
     {
         $pegawai = Pegawai::find($id);
-        $pegawai->IsActive = false;
+        $pegawai->isactive = false;
         $save = $pegawai->save();
         if($save)
         {
