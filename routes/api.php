@@ -35,3 +35,8 @@ Route::get('pegawai/create','PegawaiController@create');
 //Route::post('pegawai/store}','PegawaiController@store');
 Route::post('pegawai/update/{id}','PegawaiController@update');
 Route::post('pegawai/delete/{id}','PegawaiController@destroy');
+
+//nota dinas
+Route::resource('notadinas','NotadinasController');
+Route::post('notadinas/update/{id}','NotadinasController@update');
+Route::post('notadinas/delete/{id}','NotadinasController@destroy');

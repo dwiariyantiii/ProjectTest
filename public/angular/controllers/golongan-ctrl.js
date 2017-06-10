@@ -34,11 +34,12 @@ app.controller('golongancontroller', function ($scope,$state,golonganResource) {
   {
     $("#modal-add").modal('hide');
     console.log($scope.data);
-    golonganresource.golongan = $scope.data.golongan;
-    golonganresource.pangkat = $scope.data.pangkat;
-  
+    // golonganresource.golongan = $scope.data.golongan;
+    // golonganresource.pangkat = $scope.data.pangkat;
+    golonganresource.data = $scope.data;
     golonganresource.$add({},function(data)
     {
+      console.log(data);
         if(data.success)
         {
             $scope.widgetShow  = true;

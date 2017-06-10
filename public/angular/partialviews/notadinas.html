@@ -1,0 +1,275 @@
+<div  ng-controller="notadinascontroller" class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+               
+                <div class="x_panel">
+                  <div class="x_content bs-example-popovers">
+
+                  <div ng-show="widgetShow" ng-class="success == true ? 'alert alert-success alert-dismissible fade in':'alert alert-danger alert-dismissible fade in'" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                         {{message}}
+                  </div>
+
+                </div>
+                  <div class="x_title">
+                    <h2>Nota Dinas</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <button ng-click="btnAddClick()" type="button" class="btn btn-default btn-flat" data-widget=""><i class="glyphicon glyphicon-plus"></i></button>
+                     Nota Dinas
+                    <table id="datatable"  datatable="ng" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Instansi Tujuan</th>
+                          <th>Instansi Pengirim</th>
+                          <th>Nomor Surat</th>
+                          <th>Tanggal Surat</th>
+                          <th>Lampiran</th>
+                          <th>Perihal</th>
+                          <th>Deskripsi</th>
+                          <th>Action</th>
+                          <!--<th>Asal Kota</th>
+                          <th>Kota Tujuan</th>
+                          <th>Tanggal Berangkat</th>
+                          <th>Tanggal Kembali</th>
+                          <th>File</th>-->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="item in listnotadinas">
+                          <td>{{item.instansitujuan}}</td>
+                          <td>{{item.instansipengirim}}</td>
+                          <td>{{item.nomorsurat}}</td>
+                          <td>{{item.tangalsurat}}</td>
+                          <td>{{item.lampiran}}</td>
+                          <td>{{item.perihal}}</td>
+                          <td>{{item.deskripsi}}</td>
+                          <!--<td>{{item.asalkota}}</td>
+                          <td>{{item.kotatujuan}}</td>
+                          <td>{{item.tanggalberangkat}}</td>
+                          <td>{{item.tanggalkembali}}</td>
+                          <td>{{item.file}}</td>-->
+                          <td> 
+                            <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDetailClick(item)">Detail</button>
+                            <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnDeleteClick(item.id)">Delete</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+      <div class="modal modal-message fade" id="modal-add">
+        <div class="modal-dialog" style="width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Tambah Nota Dinas</h4>
+                </div>
+                <div class="modal-body">
+                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+								<div class="panel panel-info">
+                                    <div class="panel-heading">Nota Dinas</div>
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Instansi Tujuan<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.instansitujuan"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Instansi Pengirim<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.instansipengirim" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div> 
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Nomor Surat<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.nomorsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Surat<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tangalsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Sifat Surat<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.sifatsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Lampiran<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.lampiran" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Perihal<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.perihal" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Deskripsi<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.deskripsi" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Asal Kota<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.asalkota" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Kota Tujuan<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.kotatujuan" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Berangkat<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tanggalberangkat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Kembali<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tanggalkembali" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">File<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.file" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                    </div>
+                                  </div>
+								  <div class="panel panel-info">
+                                    <div class="panel-heading">Pegawai</div>
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-3">
+                                        <label class="control-label" for="">Pegawai<span class="required">*</span></label>
+                                        <select class="form-control"  ng-model="SaveObj.pegawaiid">
+                                            <option value="">Please Select</option>
+                                            <option ng-repeat="pegawai in listpegawai" value="{{pegawai.id}}">
+                                                {{pegawai.nama}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                  </div>                           
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="AddClick()">Save</button>
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal modal-message fade" id="modal-detail">
+        <div class="modal-dialog" style="width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Detail Nota Dinas</h4>
+                </div>
+                <div class="modal-body">
+                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+								<div class="panel panel-info">
+                                    <div class="panel-heading">Nota Dinas</div>
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Instansi Tujuan<span class="required">*</span></label>
+                                            <!--<label class="form-control-static" ng-if="editmode==false">{{SaveObj.instansitujuan}}</label>-->
+                                            <input type="text" ng-model="SaveObj.instansitujuan"  placeholder="NIP " required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Instansi Pengirim<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.instansipengirim" placeholder="Nama"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div> 
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Nomor Surat<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.nomorsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Surat<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tangalsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Sifat Surat<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.sifatsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Lampiran<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.lampiran" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Perihal<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.perihal" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Deskripsi<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.deskripsi" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Asal Kota<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.asalkota" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Kota Tujuan<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.kotatujuan" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Berangkat<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tanggalberangkat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">Tanggal Kembali<span class="required">*</span></label>
+                                            <input type="date" ng-model="SaveObj.tanggalkembali" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label" for="">File<span class="required">*</span></label>
+                                            <input type="text" ng-model="SaveObj.file" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
+                                        </div>
+                                    </div>
+                                  </div>
+								  <div class="panel panel-info">
+                                    <div class="panel-heading">Pegawai</div>
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-3">
+                                        <label class="control-label" for="">Pegawai<span class="required">*</span></label>
+                                        <select class="form-control"  ng-model="SaveObj.pegawaiid">
+                                            <option value="">Please Select</option>
+                                            <option ng-repeat="pegawai in listpegawai" value="{{pegawai.id}}">
+                                                {{pegawai.nama}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                  </div>                           
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                    <button ng-if="editmode == true"  type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="UpdateClick()">Save</button>
+                    <button ng-if="editmode == false" type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="btnEditClick()">Edit</button>
+                    <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-message fade" id="modal-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="javascript:;" class="close" data-dismiss="modal">x</a>
+                    <h4 class="modal-title">Confirmation Message</h4>
+                </div>
+                <div class="modal-body">
+                       <div class="form-group">
+                       <p>Apakah anda yakin akan menghapus data ini ?</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                   
+                  <button type="submit" class="btn btn-success btn-flat" style="width:69.55px" ng-click="DeleteClick()">OK</button>
+                   <button type="submit" class="btn btn-success btn-flat" style="width:69.55px"data-dismiss="modal">Cancel</button>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                    

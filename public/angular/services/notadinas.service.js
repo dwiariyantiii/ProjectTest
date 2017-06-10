@@ -10,11 +10,7 @@
                { id: '@id' },
                {
                  init: { method: 'GET'},
-                 add: {method:'POST'},
-                 get: {method:'GET'}, 
-                 create:{method :'GET', params:{action:"create"}},
-                 update: {method:'POST', params:{action:"update"}},
-                 delete: {method:'POST',params:{action:'delete'}}
+                 add: {method:'POST'}
                })
     }
 }());

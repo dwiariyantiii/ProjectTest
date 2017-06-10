@@ -27,4 +27,8 @@ class Pegawai extends Model
     {
         return $this->belongsTo(Golongan::class, 'golonganid');
     }
+    public function notadinasdetail()
+    {
+    return $this->hasMany(Notadinasdetail::class,'id');
+    }
 }
