@@ -70,7 +70,7 @@ class NotadinasController extends Controller
         //     $test->push($a['id']);
         // }
         // return response()->json(['obj' => $test]);
-        
+        $savenotadinasdetail = false;
         foreach ($listpegawai as $pegawai) {
             $notadinasdetail = new Notadinasdetail;
             $notadinasdetail->notadinasid = $notadinas->id;
@@ -78,10 +78,11 @@ class NotadinasController extends Controller
             $notadinasdetail->isactive = true;
             $notadinasdetail->createddate = Carbon::now();
             $notadinasdetail->createdby = $user;
-            $listnotadinasdetail->push($notadinasdetail);
+            $savenotadinasdetail = $notadinasdetail->save();
+            // $listnotadinasdetail->push($notadinasdetail);
         }
 
-        $savenotadinasdetail = $notadinas->notadinasdetail()->saveMany($listnotadinasdetail);
+        // $savenotadinasdetail = $notadinas->notadinasdetail()->saveMany($listnotadinasdetail);
 
         if($savenotadinas && $savenotadinasdetail)
         {
