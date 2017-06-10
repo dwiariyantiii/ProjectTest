@@ -64,13 +64,23 @@ class NotadinasController extends Controller
         $savenotadinas = $notadinas->save();
 
         $listnotadinasdetail = collect(new Notadinasdetail());
-        $notadinasdetail = new Notadinasdetail;
-        $notadinasdetail->notadinasid = $notadinas->id;
-        $notadinasdetail->pegawaiid = $request->SaveObj['pegawaiid'];
-        $notadinasdetail->isactive = true;
-        $notadinasdetail->createddate = Carbon::now();
-        $notadinasdetail->createdby = $user;
-        $listnotadinasdetail->push($notadinasdetail);
+        $listpegawai = $request->SaveObj['pegawaiid'];
+        // $test = collect();
+        // foreach($listpegawai as $a){
+        //     $test->push($a['id']);
+        // }
+        // return response()->json(['obj' => $test]);
+        
+        foreach ($listpegawai as $pegawai) {
+            $notadinasdetail = new Notadinasdetail;
+            $notadinasdetail->notadinasid = $notadinas->id;
+            $notadinasdetail->pegawaiid = $pegawai['id'];
+            $notadinasdetail->isactive = true;
+            $notadinasdetail->createddate = Carbon::now();
+            $notadinasdetail->createdby = $user;
+            $listnotadinasdetail->push($notadinasdetail);
+        }
+
         $savenotadinasdetail = $notadinas->notadinasdetail()->saveMany($listnotadinasdetail);
 
         if($savenotadinas && $savenotadinasdetail)

@@ -50,9 +50,9 @@ app.controller('notadinascontroller', function ($scope,$state,notadinasResource,
         console.log($scope.SaveObj);
         var notadinasresource = new notadinasResource();        
         notadinasresource.SaveObj = $scope.SaveObj;
-        // notadinasresource.$add(function(data){
-        //     console.log(data);
-        // });
+        notadinasresource.$add(function(data){
+            console.log(data);
+        });
 
     }
 

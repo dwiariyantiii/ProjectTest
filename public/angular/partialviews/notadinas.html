@@ -92,11 +92,11 @@
                                             <input type="date" ng-model="SaveObj.tangalsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Sifat Surat<span class="required">*</span></label>
+                                            <label class="control-label" for="">Sifat Surat</label>
                                             <input type="text" ng-model="SaveObj.sifatsurat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Lampiran<span class="required">*</span></label>
+                                            <label class="control-label" for="">Lampiran</label>
                                             <input type="text" ng-model="SaveObj.lampiran" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
@@ -104,23 +104,23 @@
                                             <input type="text" ng-model="SaveObj.perihal" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Deskripsi<span class="required">*</span></label>
+                                            <label class="control-label" for="">Deskripsi</label>
                                             <input type="text" ng-model="SaveObj.deskripsi" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Asal Kota<span class="required">*</span></label>
+                                            <label class="control-label" for="">Asal Kota</label>
                                             <input type="text" ng-model="SaveObj.asalkota" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Kota Tujuan<span class="required">*</span></label>
+                                            <label class="control-label" for="">Kota Tujuan</label>
                                             <input type="text" ng-model="SaveObj.kotatujuan" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Tanggal Berangkat<span class="required">*</span></label>
+                                            <label class="control-label" for="">Tanggal Berangkat</label>
                                             <input type="date" ng-model="SaveObj.tanggalberangkat" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label class="control-label" for="">Tanggal Kembali<span class="required">*</span></label>
+                                            <label class="control-label" for="">Tanggal Kembali</label>
                                             <input type="date" ng-model="SaveObj.tanggalkembali" placeholder="Gelar"  required="required" class="form-control col-md-7 col-xs-12">                                            
                                         </div>
                                         <div class="form-group col-md-3">
@@ -133,16 +133,17 @@
                                     <div class="panel-heading">Pegawai</div>
                                     <div class="panel-body">
                                         <div class="form-group col-md-3">
-                                        <label class="control-label" for="">Pegawai<span class="required">*</span></label>
-                                        <select class="form-control"  ng-model="SaveObj.pegawaiid">
-                                            <option value="">Please Select</option>
-                                            <option ng-repeat="pegawai in listpegawai" value="{{pegawai.id}}">
-                                                {{pegawai.nama}}
-                                            </option>
-                                        </select>
+                                            <label class="control-label col-md-3" for="">Daftar Pegawai<span class="required">*</span></label>
+                                            <select ng-model="SaveObj.pegawaiid" class="multi-select col-md-3" id="props" multiple 
+                                            ng-options="pegawai.nama  for pegawai in listpegawai"></select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label class="control-label col-md-3" for="">Pegawai<span class="required">*</span></label>
+                                            <select ng-model="listpegawai" class="multi-select col-md-3" id="props" multiple 
+                                            ng-options="pegawai.nama  for pegawai in SaveObj.pegawaiid"></select>
+                                        </div>
                                     </div>
-                                    </div>
-                                  </div>                           
+                                  </div>                       
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -225,12 +226,14 @@
                                     <div class="panel-body">
                                         <div class="form-group col-md-3">
                                         <label class="control-label" for="">Pegawai<span class="required">*</span></label>
-                                        <select class="form-control"  ng-model="SaveObj.pegawaiid">
+                                        <select multiple class="form-control"  ng-model="SaveObj.pegawaiid">
                                             <option value="">Please Select</option>
                                             <option ng-repeat="pegawai in listpegawai" value="{{pegawai.id}}">
                                                 {{pegawai.nama}}
                                             </option>
                                         </select>
+                                          <select ng-model="SaveObj.pegawaiid" id="props" multiple 
+                                          ng-options="pegawai.nama  for pegawai in listpegawai"></select>
                                     </div>
                                     </div>
                                   </div>                           
