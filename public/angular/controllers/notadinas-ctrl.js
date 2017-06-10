@@ -1,4 +1,8 @@
 app.controller('notadinascontroller', function ($scope,$state,notadinasResource, pegawaiResource) {
+    $('#tangalsurat, #tanggalberangkat,#tanggalkembali ').datepicker({
+        todayHighlight: true,
+        format: "dd-M-yyyy"
+    });
     var pegawairesource = new pegawaiResource();
     var notadinasresource = new notadinasResource();
     $scope.listpegawai = [];
@@ -35,8 +39,9 @@ app.controller('notadinascontroller', function ($scope,$state,notadinasResource,
     }
 
     $scope.btnDetailClick = function(obj){
-        $scope.SaveObj = obj;
-        $("#modal-detail").modal('show');
+        $scope.data = obj;
+        console.log(obj);
+        $("#modal-add").modal('show');
         
     }
 

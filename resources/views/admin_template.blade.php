@@ -28,10 +28,18 @@
     <!-- Custom Theme Style -->
     <link href="gentelella-master/build/css/custom.min.css" rel="stylesheet">   
  
+    <!-- jquery Scripts -->
+    <script type='text/javascript' src="angular/plugins/jquery/old/jquery-1.9.1.min.js"></script>
+    <script type='text/javascript' src="angular/plugins/jquery/old/jquery-migrate-1.1.0.min.js"></script>
+    <script type='text/javascript' src="angular/plugins/jquery/dist/jquery.min.js"></script>
+    <script type='text/javascript' src="angular/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script type='text/javascript' src="angular/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="angular/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
 
-  <!--library-->
+  <!--angular library-->
   <script type='text/javascript' src="angular/plugins/angular/angular.js"></script>
-  <script type='text/javascript'  src="angular/plugins/angular/ocLazyLoad.min.js"></script>
+  <script type='text/javascript' src="angular/plugins/angular/ocLazyLoad.min.js"></script>
+  <script type="text/javascript" src="angular/plugins/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script type='text/javascript' src="angular/plugins/angular-ui-router/release/angular-ui-router.js"></script>
   <script type='text/javascript' src="angular/plugins/angular/angular-resource.js"></script>
 
